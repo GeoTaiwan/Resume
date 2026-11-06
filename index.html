@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>吳宗鴻 (Tsung-Hung Wu) | 全端軟體工程師</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            50: '#f0f4f8',
+                            100: '#d9e2ec',
+                            500: '#334e68',
+                            700: '#243b53',
+                            900: '#102a43',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        /* Timeline specific styles */
+        .timeline-container {
+            position: relative;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 1.5rem;
+            width: 2px;
+            background-color: #d9e2ec;
+        }
+
+        @media (min-width: 768px) {
+            .timeline-container::before {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Fade-in animation classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 antialiased selection:bg-blue-600 selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-sm shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-xl font-bold text-navy-900 tracking-wider">THW<span
+                            class="text-blue-600">.</span></a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-gray-600 hover:text-blue-600 transition-colors font-medium">專業摘要</a>
+                    <a href="#skills" class="text-gray-600 hover:text-blue-600 transition-colors font-medium">核心技術</a>
+                    <a href="#projects" class="text-gray-600 hover:text-blue-600 transition-colors font-medium">專案實績</a>
+                    <a href="#experience"
+                        class="text-gray-600 hover:text-blue-600 transition-colors font-medium">工作經歷</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <a href="#about" class="block px-4 py-2 text-gray-600 hover:bg-gray-50">專業摘要</a>
+            <a href="#skills" class="block px-4 py-2 text-gray-600 hover:bg-gray-50">核心技術</a>
+            <a href="#projects" class="block px-4 py-2 text-gray-600 hover:bg-gray-50">專案實績</a>
+            <a href="#experience" class="block px-4 py-2 text-gray-600 hover:bg-gray-50">工作經歷</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 bg-navy-900 overflow-hidden">
+        <!-- Abstract background pattern -->
+        <div class="absolute inset-0 opacity-10">
+            <svg class="h-full w-full" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="grid-pattern" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M0 40V0H40" fill="none" stroke="currentColor" stroke-width="1" />
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid-pattern)" text-white />
+            </svg>
+        </div>
+
+        <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 tracking-tight">
+                吳宗鴻 <span class="text-gray-400 font-light text-3xl md:text-5xl">Tsung-Hung Wu</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-blue-400 font-medium mb-6">
+                全端軟體工程師 / 資訊系統工程師
+            </p>
+            <div class="w-24 h-1 bg-blue-600 mx-auto mb-8 rounded-full"></div>
+            <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 italic">
+                「紀律與邏輯的結合：從高階士官到全端工程師的進化之路」
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#contact"
+                    class="px-8 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-500/30 flex items-center justify-center gap-2">
+                    <i class="fas fa-envelope"></i> Contact Me
+                </a>
+                <a href="https://github.com/GeoTaiwan" target="_blank" rel="noopener noreferrer"
+                    class="px-8 py-3 bg-white/10 text-white rounded-lg font-semibold hover:bg-white/20 transition-all backdrop-blur-sm border border-white/20 flex items-center justify-center gap-2">
+                    <i class="fab fa-github"></i> View GitHub
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 fade-in">
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="w-full md:w-1/3 flex justify-center">
+                    <div
+                        class="relative w-64 h-64 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-navy-50 shadow-xl">
+                        <!-- Placeholder for User Image -->
+                        <img src="https://placehold.co/400x400/102a43/ffffff?text=THW" alt="Tsung-Hung Wu"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="w-full md:w-2/3">
+                    <h2 class="text-3xl font-bold text-navy-900 mb-6 flex items-center gap-3">
+                        <i class="fas fa-user-tie text-blue-600"></i> 專業摘要
+                    </h2>
+                    <p class="text-lg text-gray-600 leading-relaxed mb-6">
+                        具備紮實的全端系統開發能力（<strong class="text-navy-700">C# .NET / Java / JavaScript</strong>）與 20
+                        年海軍陸戰隊高階領導與專案管理經驗。擁有極強的抗壓性、跨部門溝通協調能力與嚴謹的 SOP 制定意識。
+                    </p>
+                    <p class="text-lg text-gray-600 leading-relaxed mb-6">
+                        具備 TOEIC 790 分外語能力，能無縫接軌國際化技術標準，期望將深厚的系統化管理經驗與軟體工程技術，投入企業的資訊系統開發與數位轉型。
+                    </p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-8 border-t border-gray-100">
+                        <div class="text-center">
+                            <h4 class="text-3xl font-bold text-blue-600">20<span class="text-lg text-gray-400">+</span>
+                            </h4>
+                            <p class="text-sm text-gray-500 mt-1">年管理與領導經驗</p>
+                        </div>
+                        <div class="text-center">
+                            <h4 class="text-3xl font-bold text-blue-600">100<span class="text-lg text-gray-400">%</span>
+                            </h4>
+                            <p class="text-sm text-gray-500 mt-1">獨立全端開發能力</p>
+                        </div>
+                        <div class="text-center">
+                            <h4 class="text-3xl font-bold text-blue-600">790</h4>
+                            <p class="text-sm text-gray-500 mt-1">TOEIC 英語能力</p>
+                        </div>
+                        <div class="text-center">
+                            <h4 class="text-3xl font-bold text-blue-600">∞</h4>
+                            <p class="text-sm text-gray-500 mt-1">問題解決熱忱</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-navy-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 fade-in">
+            <h2 class="text-3xl font-bold text-navy-900 mb-12 text-center">核心技術與能力</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Front-End -->
+                <div
+                    class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border-t-4 border-blue-500">
+                    <div class="text-blue-600 text-3xl mb-4"><i class="fas fa-laptop-code"></i></div>
+                    <h3 class="text-xl font-bold text-navy-900 mb-4">前端開發</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">HTML5</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">CSS3
+                            (Grid)</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">Vanilla
+                            JS</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">RWD</span>
+                    </div>
+                </div>
+
+                <!-- Back-End -->
+                <div
+                    class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border-t-4 border-green-500">
+                    <div class="text-green-500 text-3xl mb-4"><i class="fas fa-server"></i></div>
+                    <h3 class="text-xl font-bold text-navy-900 mb-4">後端與行動端</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">C#</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">ASP.NET Core
+                            MVC</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">Java</span>
+                        <span
+                            class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">Node.js</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">Android
+                            App</span>
+                    </div>
+                </div>
+
+                <!-- System Arch -->
+                <div
+                    class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border-t-4 border-purple-500">
+                    <div class="text-purple-500 text-3xl mb-4"><i class="fas fa-database"></i></div>
+                    <h3 class="text-xl font-bold text-navy-900 mb-4">系統架構</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">SQL
+                            Server</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">RESTful
+                            API</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">Vercel</span>
+                        <span
+                            class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">Serverless</span>
+                    </div>
+                </div>
+
+                <!-- Soft Skills -->
+                <div
+                    class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border-t-4 border-yellow-500">
+                    <div class="text-yellow-500 text-3xl mb-4"><i class="fas fa-users-cog"></i></div>
+                    <h3 class="text-xl font-bold text-navy-900 mb-4">管理與軟實力</h3>
+                    <div class="flex flex-col gap-2 text-gray-600 text-sm">
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> 專案管理與時程規劃</div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> SOP 制定與落實</div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> 資安與風險控管</div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> 跨單位溝通協調</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 fade-in">
+            <h2 class="text-3xl font-bold text-navy-900 mb-4 text-center">專案實績</h2>
+            <p class="text-gray-500 text-center mb-12 max-w-2xl mx-auto">以實戰能力解決痛點，涵蓋全端系統建置、雲端部署與流程自動化。</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Project 1 -->
+                <div
+                    class="group bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 flex flex-col">
+                    <div class="h-48 bg-navy-900 p-6 flex items-center justify-center relative overflow-hidden">
+                        <div
+                            class="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDBMOCA4Wk04IDBMMCA4WiIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEiPjwvcGF0aD4KPC9zdmc+')]">
+                        </div>
+                        <i
+                            class="fas fa-paw text-6xl text-white relative z-10 group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold text-navy-900 mb-2">PetCare 智慧寵物雲端系統</h3>
+                        <p class="text-gray-600 text-sm mb-4 flex-grow">獨立完成後端資料庫架構設計與 API 開發，並串接 Android
+                            客戶端，實現跨平台健康數據交換。</p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="px-2 py-1 bg-blue-50 text-blue-600 rounded text-xs font-semibold">C#</span>
+                            <span class="px-2 py-1 bg-blue-50 text-blue-600 rounded text-xs font-semibold">ASP.NET
+                                Core</span>
+                            <span class="px-2 py-1 bg-blue-50 text-blue-600 rounded text-xs font-semibold">SQL
+                                Server</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div
+                    class="group bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 flex flex-col">
+                    <div class="h-48 bg-navy-700 p-6 flex items-center justify-center relative overflow-hidden">
+                        <div
+                            class="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDBMOCA4Wk04IDBMMCA4WiIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEiPjwvcGF0aD4KPC9zdmc+')]">
+                        </div>
+                        <i
+                            class="fas fa-parking text-6xl text-white relative z-10 group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold text-navy-900 mb-2">vpParking 即時路邊停車查詢</h3>
+                        <p class="text-gray-600 text-sm mb-4 flex-grow">開發 Serverless 網頁應用服務，介接政府 TDX 開放資料
+                            API，實現高併發狀態下的即時車位圖資渲染。</p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span
+                                class="px-2 py-1 bg-blue-50 text-blue-600 rounded text-xs font-semibold">Node.js</span>
+                            <span
+                                class="px-2 py-1 bg-blue-50 text-blue-600 rounded text-xs font-semibold">Leaflet</span>
+                            <span class="px-2 py-1 bg-blue-50 text-blue-600 rounded text-xs font-semibold">Vercel</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div
+                    class="group bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 flex flex-col">
+                    <div class="h-48 bg-navy-500 p-6 flex items-center justify-center relative overflow-hidden">
+                        <div
+                            class="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDBMOCA4Wk04IDBMMCA4WiIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEiPjwvcGF0aD4KPC9zdmc+')]">
+                        </div>
+                        <i
+                            class="fab fa-line text-6xl text-white relative z-10 group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold text-navy-900 mb-2">自動化排班 LINE Bot</h3>
+                        <p class="text-gray-600 text-sm mb-4 flex-grow">自主開發 GAS LINE
+                            Bots，將傳統人工排班與值星曆查詢流程全面自動化，大幅提升組織內部作業效率。</p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="px-2 py-1 bg-blue-50 text-blue-600 rounded text-xs font-semibold">Google Apps
+                                Script</span>
+                            <span class="px-2 py-1 bg-blue-50 text-blue-600 rounded text-xs font-semibold">LINE
+                                Messaging API</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-navy-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 fade-in">
+            <h2 class="text-3xl font-bold text-navy-900 mb-12 text-center">工作經歷</h2>
+
+            <div class="timeline-container py-4">
+
+                <!-- Timeline Item 1 -->
+                <div class="relative mb-12 md:w-1/2 md:ml-auto md:pl-10 pl-12 flex flex-col items-start fade-in">
+                    <!-- Dot -->
+                    <div
+                        class="absolute left-6 md:left-0 top-1.5 w-4 h-4 rounded-full bg-blue-600 shadow ring-4 ring-navy-50 transform -translate-x-1/2">
+                    </div>
+
+                    <div
+                        class="bg-white p-6 rounded-xl shadow-md border border-gray-100 w-full hover:shadow-lg transition-shadow">
+                        <div class="flex flex-wrap justify-between items-center mb-2">
+                            <h3 class="text-xl font-bold text-navy-900">勞動力發展署</h3>
+                            <span class="text-sm font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">2026 結業</span>
+                        </div>
+                        <h4 class="text-md font-semibold text-gray-700 mb-3">智慧行動商務系統開發班</h4>
+                        <ul class="text-gray-600 text-sm space-y-2">
+                            <li class="flex items-start"><i class="fas fa-caret-right text-blue-500 mt-1 mr-2"></i>
+                                以班代及班級第二名優異成績結業。</li>
+                            <li class="flex items-start"><i class="fas fa-caret-right text-blue-500 mt-1 mr-2"></i> 奠定
+                                C# .NET、Java 與前後端整合實戰能力。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div
+                    class="relative mb-12 md:w-1/2 md:pr-10 pl-12 md:pl-0 flex flex-col md:items-end items-start fade-in">
+                    <!-- Dot -->
+                    <div
+                        class="absolute left-6 md:left-full top-1.5 w-4 h-4 rounded-full bg-navy-700 shadow ring-4 ring-navy-50 transform -translate-x-1/2">
+                    </div>
+
+                    <div
+                        class="bg-white p-6 rounded-xl shadow-md border border-gray-100 w-full hover:shadow-lg transition-shadow text-left md:text-right">
+                        <div class="flex flex-wrap md:flex-row-reverse justify-between items-center mb-2">
+                            <h3 class="text-xl font-bold text-navy-900">中華民國海軍陸戰隊</h3>
+                            <span
+                                class="text-sm font-medium text-gray-600 bg-gray-100 px-2 py-1 rounded mt-2 md:mt-0">2006.10
+                                - 2026.09</span>
+                        </div>
+                        <h4 class="text-md font-semibold text-gray-700 mb-3">上士</h4>
+                        <ul class="text-gray-600 text-sm space-y-2 inline-block text-left">
+                            <li class="flex items-start"><i class="fas fa-caret-right text-navy-500 mt-1 mr-2"></i>
+                                <strong>高機敏任務系統操作與資安防護：</strong> 曾赴美國接受專業訓練，長期負責具備極高資安保密要求之航空與反潛作業系統操作。</li>
+                            <li class="flex items-start"><i class="fas fa-caret-right text-navy-500 mt-1 mr-2"></i>
+                                <strong>SOP 制定與落實：</strong> 負責內部技術標準作業程序的推動，將複雜規範轉化為可執行流程。</li>
+                            <li class="flex items-start"><i class="fas fa-caret-right text-navy-500 mt-1 mr-2"></i>
+                                <strong>數位化流程導入：</strong> 主動發掘管理痛點，導入並自主開發自動化工具提升組織效率。</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-navy-900 text-white py-12 border-t border-navy-700">
+        <div
+            class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div>
+                <h2 class="text-2xl font-bold tracking-wider mb-2">THW<span class="text-blue-500">.</span></h2>
+                <p class="text-gray-400 text-sm">全端軟體工程師 / 具備 20 年管理視野</p>
+            </div>
+
+            <div class="flex flex-col items-center md:items-end gap-4">
+                <div class="flex gap-4">
+                    <a href="mailto:geo.light.deathnote@google.com"
+                        class="w-10 h-10 rounded-full bg-navy-700 flex items-center justify-center text-gray-300 hover:bg-blue-600 hover:text-white transition-colors"
+                        title="Email Me">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://github.com/GeoTaiwan" target="_blank"
+                        class="w-10 h-10 rounded-full bg-navy-700 flex items-center justify-center text-gray-300 hover:bg-blue-600 hover:text-white transition-colors"
+                        title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/%E5%AE%97%E9%B4%BB-%E5%90%B3-968806241/" target="_blank"
+                        class="w-10 h-10 rounded-full bg-navy-700 flex items-center justify-center text-gray-300 hover:bg-blue-600 hover:text-white transition-colors"
+                        title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+                <p class="text-gray-500 text-xs">
+                    &copy; 2026 Tsung-Hung Wu. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile menu toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        const menuLinks = menu.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Intersection Observer for fade-in animations on scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('appear');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+
+</html>
